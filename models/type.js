@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const  { Schema } = require('mongoose')
+const { Schema } = require('mongoose')
 
 const Type = new Schema(
     {
@@ -14,4 +14,4 @@ const Type = new Schema(
     { timestamps: true },
 )
 
-module.exports = mongoose.model('type', Type)
+module.exports = mongoose.model('Type', Type)

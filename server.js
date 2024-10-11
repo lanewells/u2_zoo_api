@@ -16,6 +16,10 @@ app.get('/', (req, res)=> {
     res.send('welcome to the zoo page!')
 })
 
+app.get('/types/marsupials', typeController.getMarsupial)
+app.get('/types/mammals', typeController.getMammal)
+app.get('/types/reptiles', typeController.getReptile)
+
 app.get('/animals', animalController.getAllAnimals)
 app.get('/animals/:id', animalController.getAnimalById)
 app.post('/animals', animalController.createAnimal)

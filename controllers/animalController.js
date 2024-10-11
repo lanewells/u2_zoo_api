@@ -41,7 +41,7 @@ const createAnimal = async (req, res) => {
 
 const updateAnimal = async (req, res) => {
     try {
-        let id = req.params
+        let { id } = req.params
         const animal = await Animal.findByIdAndUpdate(id, req.body, { new: true })
         if (animal) {
             return res.status(200).json(animal)

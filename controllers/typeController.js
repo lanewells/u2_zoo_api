@@ -40,7 +40,7 @@ const createType = async (req, res) => {
 
 const updateType = async (req, res) => {
     try {
-        let id = req.params
+        let { id } = req.params
         const type = await Type.findByIdAndUpdate(id, req.body, { new: true })
         if (type) {
             return res.status(200).json(type)
@@ -65,10 +65,40 @@ const deleteType = async (req, res) => {
     }
 }
 
+const getMarsupial = async (req, res) => {
+    try {
+        const marsupials = await Type.findOne({name: 'Marsupial'}).populate('animalIds')
+        res.json(marsupials)
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+const getMammal = async (req, res) => {
+    try {
+        const eutherians = await Type.findOne({name: 'Mammal'}).populate('animalIds')
+        res.json(eutherians)
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+const getReptile = async (req, res) => {
+    try {
+        const reptiles = await Type.findOne({name: 'Reptile'}).populate('animalIds')
+        res.json(reptiles)
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     getAllTypes,
     getTypeById,
     createType,
     updateType,
-    deleteType
+    deleteType,
+    getMarsupial,
+    getReptile,
+    getMammal
 }
